@@ -1,5 +1,6 @@
 package model.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +27,16 @@ public class HolydayService {
     return holidays;
   }
 
+  public List<Holiday> getHolidayByDate(LocalDate date) {
+    List<Holiday> holidays = new ArrayList<>();
+    for (Holiday holiday : this.holidays) {
+      if (holiday.getDate().equals(date)){
+        holidays.add(holiday);
+      }
+    }
+    return holidays;
+  }
+
   public void addHoliday(Holiday holiday) {
     holidays.add(holiday);
   }
@@ -36,6 +47,10 @@ public class HolydayService {
   
   @Override
   public String toString() {
+    return toString(holidays);
+  }
+
+  public String toString(List<Holiday> holidays) {
     String result = "";
     for (Holiday holiday : holidays) {
       result += holiday.toString() + "\n";

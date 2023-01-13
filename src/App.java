@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import model.entities.Holiday;
@@ -41,6 +42,7 @@ public class App {
                 System.out.println("1: List all holidays orderded by Date");
                 System.out.println("2: List all holidays orderded by Description");
                 System.out.println("3: Add a holiday");
+                System.out.println("4: Find a holiday by date");
                 System.out.println("0: Exit");
     
                 System.out.print(" => ");
@@ -59,6 +61,16 @@ public class App {
                     System.out.print("Enter the description: ");
                     String description = sc.nextLine();
                     service.addHoliday(new Holiday(date, description));
+                } else if (option == 4) {
+                    System.out.print("Enter the date (dd/MM/yyyy): ");
+                    sc.nextLine();
+                    LocalDate date = LocalDate.parse(sc.nextLine(), fmt);
+                    List<Holiday> holidays = service.getHolidayByDate(date);
+                    if (holidays.size() > 0) {
+                        System.out.println(service.toString(holidays));
+                    } else {
+                        System.out.println("There is no holiday on this date");
+                    }
                 } else if (option == 0) {
                     System.out.println("Bye");
                 } else {
@@ -67,7 +79,7 @@ public class App {
     
                 System.out.println();
     
-            } while (option > 0 && option < 4);
+            } while (option > 0 && option < 5);
         } catch (InputMismatchException e) {
             System.out.println("Invalid input data");
         } catch (DateTimeParseException e) {
