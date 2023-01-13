@@ -1,8 +1,10 @@
-## Getting Started
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://www.svgrepo.com/download/452234/java.svg" height="110" alt="Nest Logo" /></a>
+</p>
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Getting Started With Holydayzer
 
-## Folder Structure
+> Add and list holidays
 
 The workspace contains two folders by default, where:
 
